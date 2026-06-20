@@ -1,0 +1,75 @@
+/* ============================================================
+   Design tokens — "Holographic AI Lab" (dark-only, cinematic)
+   ============================================================ */
+:root {
+  /* --- deep-space base --- */
+  --bg-void: #03040a;
+  --bg-base: #060814;
+  --bg-raised: #0b0e1f;
+  --bg-sunken: #04050e;
+
+  /* glass */
+  --glass: rgba(18, 24, 48, 0.45);
+  --glass-strong: rgba(24, 32, 60, 0.72);
+  --glass-border: rgba(120, 170, 255, 0.14);
+  --glass-border-strong: rgba(150, 200, 255, 0.28);
+
+  /* --- text --- */
+  --text-hi: #eef3ff;
+  --text-mid: #9fb0d6;
+  --text-lo: #61719b;
+  --text-faint: #3a4564;
+
+  /* --- holographic spectrum --- */
+  --cyan: #2fe6ff;
+  --teal: #2dd4bf;
+  --blue: #4f8dff;
+  --violet: #8b5cf6;
+  --indigo: #818cf8;
+  --magenta: #e879f9;
+  --pink: #fb7bc4;
+
+  /* signature accent = electric cyan, secondary violet */
+  --accent: #2fe6ff;
+  --accent-2: #a06bff;
+  --accent-soft: #8af3ff;
+  --accent-glow: rgba(47, 230, 255, 0.45);
+
+  /* per-act hues */
+  --c-hero: #2fe6ff;
+  --c-think: #4f8dff;
+  --c-agents: #a06bff;
+  --c-skills: #e879f9;
+  --c-mcp: #2dd4bf;
+  --c-tokens: #2fe6ff;
+  --c-workflow: #818cf8;
+  --c-toolkit: #fb7bc4;
+
+  /* gauge stops (fuel: calm -> danger) */
+  --gauge-low: #2dd4bf;
+  --gauge-mid: #a06bff;
+  --gauge-high: #fb5a8c;
+
+  /* radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 30px;
+  --r-pill: 999px;
+
+  /* shadows / glow */
+  --shadow-panel: 0 18px 60px -18px rgba(0, 0, 0, 0.85);
+  --shadow-float: 0 30px 90px -24px rgba(0, 0, 0, 0.9);
+  --ring-focus: 0 0 0 2px var(--bg-base), 0 0 0 4px var(--accent);
+
+  /* type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Code", monospace;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-mid: 320ms;
+  --dur-slow: 700ms;
+}
