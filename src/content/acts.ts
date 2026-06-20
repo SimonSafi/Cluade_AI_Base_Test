@@ -22,9 +22,45 @@ export const ACTS: ActMeta[] = [
   { id: 'toolkit', index: '07', hue: '--c-toolkit', kicker: 'Your toolkit', title: 'Tools, by purpose', caption: 'Skills + connectors grouped for the job.' },
   { id: 'glossary', index: '08', hue: '--c-mcp', kicker: 'Glossary', title: 'The vocabulary', caption: 'Every term, one line. Hover for the why.' },
   { id: 'resources', index: '09', hue: '--c-workflow', kicker: 'Resources', title: 'Go deeper', caption: 'Official docs + references to keep going.' },
-  { id: 'generate', index: '10', hue: '--c-hero', kicker: 'Build', title: 'Generate your first workflow', caption: 'Describe an idea → get a Claude Code starting kit.' },
-  { id: 'builder', index: '11', hue: '--c-verify', kicker: 'Builder mode', title: 'How this was built', caption: 'The stack and principles behind this lab.' },
+  { id: 'devguide', index: '10', hue: '--c-think', kicker: 'Dev guide', title: 'Files & how to ship', caption: 'What every file is, localhost vs standalone, and Claude Code tips.' },
+  { id: 'generate', index: '11', hue: '--c-hero', kicker: 'Build', title: 'Generate your first workflow', caption: 'Describe an idea → get a Claude Code starting kit.' },
+  { id: 'builder', index: '12', hue: '--c-verify', kicker: 'Builder mode', title: 'How this was built', caption: 'The stack and principles behind this lab.' },
 ]
+
+/* ---------- Dev guide ---------- */
+export interface FileType { ext: string; what: string; when: string; icon: IconName; hue: string }
+export const FILE_TYPES: FileType[] = [
+  { ext: 'package.json', what: 'Project manifest — dependencies + run scripts.', when: 'Created at init; edited when you add a library.', icon: 'plan', hue: '--cyan' },
+  { ext: 'package-lock.json', what: 'The lockfile — exact version of every dependency.', when: 'Auto-written on npm install. Commit it; don’t edit by hand.', icon: 'verify', hue: '--teal' },
+  { ext: 'tsconfig.json', what: 'TypeScript compiler settings.', when: 'At setup; rarely after.', icon: 'build', hue: '--blue' },
+  { ext: '.env', what: 'Secret keys + environment variables.', when: 'You create it. Never commit — add to .gitignore.', icon: 'token', hue: '--gauge-high' },
+  { ext: '.gitignore', what: 'Files Git should ignore (node_modules, dist, .env).', when: 'At repo init.', icon: 'verify', hue: '--indigo' },
+  { ext: '.json', what: 'Structured key/value data.', when: 'Config, content, saved state, API request/response.', icon: 'data', hue: '--violet' },
+  { ext: '.md', what: 'Markdown — human docs.', when: 'README, notes, and CLAUDE.md (project house-rules).', icon: 'spark', hue: '--magenta' },
+  { ext: '.csv', what: 'Plain tabular rows & columns.', when: 'Data exports/imports, spreadsheets, datasets.', icon: 'data', hue: '--teal' },
+  { ext: '.db / .sqlite', what: 'A local database in a single file.', when: 'When an app stores data on disk without a server.', icon: 'mcp', hue: '--cyan' },
+  { ext: '.ts / .tsx', what: 'TypeScript / React source — your code.', when: 'Everything you build; .tsx holds UI.', icon: 'build', hue: '--blue' },
+  { ext: '.log', what: 'Runtime output from servers/tools.', when: 'Generated while running — read for errors, don’t commit.', icon: 'plan', hue: '--indigo' },
+  { ext: 'dist/', what: 'Built, optimized output ready to host.', when: 'Created by `npm run build`. Never edited by hand.', icon: 'ship', hue: '--c-hero' },
+]
+
+export interface DeployStage { label: string; cmd: string; desc: string; reach: string; icon: IconName; hue: string }
+export const DEPLOY_STAGES: DeployStage[] = [
+  { label: 'Localhost (dev)', cmd: 'npm run dev', desc: 'Live server with hot-reload while you build.', reach: 'Only your machine (localhost:5173).', icon: 'build', hue: '--cyan' },
+  { label: 'Production build', cmd: 'npm run build', desc: 'Compiles + optimizes everything into static files.', reach: 'A dist/ folder on disk.', icon: 'spark', hue: '--violet' },
+  { label: 'Standalone (deployed)', cmd: 'deploy dist/', desc: 'Host the build on Netlify / Vercel / GitHub Pages.', reach: 'A public URL anyone can open.', icon: 'mcp', hue: '--teal' },
+]
+
+export interface CcTip { label: string; note: string; icon: IconName; hue: string }
+export const CC_TIPS: CcTip[] = [
+  { label: 'Plan before code', note: 'Use plan mode; approve the plan, then let it edit.', icon: 'plan', hue: '--blue' },
+  { label: 'One slice first', note: 'Ship a thin vertical slice, then scale the pattern.', icon: 'build', hue: '--violet' },
+  { label: 'Delegate heavy work', note: 'Subagents for search/review; keep the main chat lean.', icon: 'delegate', hue: '--magenta' },
+  { label: 'Codify repeats', note: 'Turn instructions you repeat into a skill.', icon: 'skill', hue: '--c-skills' },
+  { label: 'Connect, don’t paste', note: 'Wire MCP for Figma/browser/DB instead of pasting context.', icon: 'mcp', hue: '--teal' },
+  { label: 'Verify for real', note: 'Run the app + screenshot — type-checks alone lie.', icon: 'verify', hue: '--c-verify' },
+]
+export const CC_TERMS = ['dev server', 'HMR (hot reload)', 'build', 'bundle', 'dependency', 'lockfile', 'repo', 'commit', 'branch', 'PR', 'env var', 'localhost', 'deploy', 'context window']
 
 /* ---------- Glossary ---------- */
 export interface GlossaryTerm { term: string; def: string; why: string; hue: string }

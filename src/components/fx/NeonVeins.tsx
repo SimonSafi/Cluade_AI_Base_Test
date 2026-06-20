@@ -34,10 +34,9 @@ export function NeonVeins() {
         <defs>
           <linearGradient id="veinGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--cyan)" />
-            <stop offset="30%" stopColor="var(--accent-2)" />
-            <stop offset="55%" stopColor="var(--teal)" />
-            <stop offset="78%" stopColor="var(--magenta)" />
-            <stop offset="100%" stopColor="var(--blue)" />
+            <stop offset="38%" stopColor="var(--blue)" />
+            <stop offset="70%" stopColor="var(--indigo)" />
+            <stop offset="100%" stopColor="var(--cyan)" />
           </linearGradient>
         </defs>
         {VEINS.map((v, i) => <Vein key={i} d={v.d} delay={v.delay} />)}

@@ -16,6 +16,7 @@ import { WorkflowAct } from '@/acts/WorkflowAct'
 import { ToolkitAct } from '@/acts/ToolkitAct'
 import { GlossaryAct } from '@/acts/GlossaryAct'
 import { ResourcesAct } from '@/acts/ResourcesAct'
+import { DevGuideAct } from '@/acts/DevGuideAct'
 import { ProjectGeneratorAct } from '@/acts/ProjectGeneratorAct'
 import { BuilderAct } from '@/acts/BuilderAct'
 import { OutroAct } from '@/acts/OutroAct'
@@ -53,6 +54,7 @@ export default function App() {
         <SectionConnector hue="--c-mcp" />
         <GlossaryAct />
         <ResourcesAct />
+        <DevGuideAct />
         <SectionConnector hue="--c-hero" />
         <ProjectGeneratorAct />
         <BuilderAct />

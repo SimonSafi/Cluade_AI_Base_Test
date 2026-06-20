@@ -15,7 +15,8 @@ export function SpaceFlight({ className }: { className?: string }) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const css = getComputedStyle(document.documentElement)
     const hex = (v: string, f: string) => css.getPropertyValue(v).trim() || f
-    const palette = [hex('--cyan', '#2fe6ff'), hex('--accent-2', '#a06bff'), hex('--teal', '#2dd4bf'), hex('--magenta', '#e879f9'), '#cfe8ff']
+    // monotonic dark theme — mostly white/cool stars, a touch of cyan
+    const palette = ['#cfe0f5', '#ffffff', '#a9c4e8', hex('--cyan', '#2fe6ff'), '#dfeaff']
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     let w = 0, h = 0, cx = 0, cy = 0, spread = 0, raf = 0
