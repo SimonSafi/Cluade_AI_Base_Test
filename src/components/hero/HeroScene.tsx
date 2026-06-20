@@ -9,18 +9,22 @@ const CX = 50
 const CY = 56
 
 interface Feature {
-  id: string; icon: IconName; label: string; hue: string
+  id: string; icon: IconName; label: string; hue: string; route: string
   rx: number; ry: number; rot: number; angle0: number; period: number; dir: 1 | -1
 }
 /** pairs share a ring — flattened ellipse = a 3D ring tilted around the head */
 const FEATURES: Feature[] = [
-  { id: 'agents', icon: 'agent', label: 'Agents', hue: '--violet', rx: 31, ry: 13, rot: -7, angle0: 200, period: 24, dir: 1 },
-  { id: 'tokens', icon: 'token', label: 'Tokens', hue: '--cyan', rx: 31, ry: 13, rot: -7, angle0: 20, period: 24, dir: 1 },
-  { id: 'skills', icon: 'skill', label: 'Skills', hue: '--magenta', rx: 42, ry: 16, rot: 9, angle0: 120, period: 34, dir: -1 },
-  { id: 'mcp', icon: 'mcp', label: 'MCP', hue: '--teal', rx: 42, ry: 16, rot: 9, angle0: 300, period: 34, dir: -1 },
-  { id: 'workflow', icon: 'delegate', label: 'Workflow', hue: '--blue', rx: 53, ry: 20, rot: -4, angle0: 70, period: 46, dir: 1 },
-  { id: 'verify', icon: 'verify', label: 'Verify', hue: '--cyan', rx: 53, ry: 20, rot: -4, angle0: 250, period: 46, dir: 1 },
+  { id: 'agents', icon: 'agent', label: 'Agents', hue: '--violet', route: 'agents', rx: 31, ry: 13, rot: -7, angle0: 200, period: 24, dir: 1 },
+  { id: 'tokens', icon: 'token', label: 'Tokens', hue: '--cyan', route: 'tokens', rx: 31, ry: 13, rot: -7, angle0: 20, period: 24, dir: 1 },
+  { id: 'skills', icon: 'skill', label: 'Skills', hue: '--magenta', route: 'skills', rx: 42, ry: 16, rot: 9, angle0: 120, period: 34, dir: -1 },
+  { id: 'mcp', icon: 'mcp', label: 'MCP', hue: '--teal', route: 'mcp', rx: 42, ry: 16, rot: 9, angle0: 300, period: 34, dir: -1 },
+  { id: 'workflow', icon: 'delegate', label: 'Workflow', hue: '--blue', route: 'workflow', rx: 53, ry: 20, rot: -4, angle0: 70, period: 46, dir: 1 },
+  { id: 'verify', icon: 'verify', label: 'Verify', hue: '--cyan', route: 'think', rx: 53, ry: 20, rot: -4, angle0: 250, period: 46, dir: 1 },
 ]
+
+function goTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 const RINGS = [{ rx: 31, ry: 13, rot: -7 }, { rx: 42, ry: 16, rot: 9 }, { rx: 53, ry: 20, rot: -4 }]
 
 function ptDepth(f: Feature, ms: number) {
@@ -60,15 +64,16 @@ function FloatingFeature({ f }: { f: Feature }) {
   const c = `var(${f.hue})`
   return (
     <motion.div className="absolute" style={{ left, top, x: '-50%', y: '-50%', scale, opacity, zIndex }}>
-      <Tooltip label={f.label}>
-        <span className="relative flex flex-col items-center gap-1">
-          <span className="pointer-events-none absolute -z-10 h-[72px] w-[72px] -translate-y-3 rounded-full" style={{ background: `radial-gradient(circle, color-mix(in oklab, ${c} 30%, transparent), transparent 70%)` }} />
-          <span className="grid h-11 w-11 place-items-center rounded-full text-hi"
+      <Tooltip label={`Open ${f.label} →`}>
+        <button type="button" onClick={() => goTo(f.route)} aria-label={`Open ${f.label}`}
+          className="group relative flex cursor-pointer flex-col items-center gap-1 outline-none">
+          <span className="pointer-events-none absolute -z-10 h-[72px] w-[72px] -translate-y-3 rounded-full transition-all group-hover:scale-125" style={{ background: `radial-gradient(circle, color-mix(in oklab, ${c} 30%, transparent), transparent 70%)` }} />
+          <span className="grid h-11 w-11 place-items-center rounded-full text-hi transition-transform group-hover:scale-110"
             style={{ color: c, background: `radial-gradient(38% 38% at 36% 30%, color-mix(in oklab, ${c} 75%, #fff 12%), color-mix(in oklab, ${c} 36%, transparent) 52%, color-mix(in oklab, var(--bg-void) 82%, ${c}) 100%)`, border: `1px solid color-mix(in oklab, ${c} 62%, transparent)`, boxShadow: `0 0 18px -3px ${c}, inset -3px -5px 12px rgba(0,0,0,0.55)` }}>
             <Icon name={f.icon} size={19} />
           </span>
-          <motion.span className="whitespace-nowrap text-[10px] font-medium text-mid" style={{ opacity: labelOpacity }}>{f.label}</motion.span>
-        </span>
+          <motion.span className="whitespace-nowrap text-[10px] font-medium text-mid group-hover:text-hi" style={{ opacity: labelOpacity }}>{f.label}</motion.span>
+        </button>
       </Tooltip>
     </motion.div>
   )

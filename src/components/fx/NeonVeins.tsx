@@ -5,10 +5,10 @@ import { useTime, useTransform, motion } from 'motion/react'
    living organism. viewBox is stretched (preserveAspectRatio none) to the full page height. */
 
 const VEINS = [
-  { d: 'M 9 0 C 20 120, 2 220, 12 340 S 26 560, 8 700 S 20 880, 10 1000', delay: 0 },
-  { d: 'M 31 0 C 24 140, 38 260, 30 380 S 20 600, 34 740 S 26 900, 30 1000', delay: -6 },
-  { d: 'M 69 0 C 76 130, 62 250, 70 370 S 80 590, 66 730 S 74 900, 70 1000', delay: -10 },
-  { d: 'M 91 0 C 80 110, 98 230, 88 360 S 74 580, 92 720 S 80 900, 90 1000', delay: -14 },
+  { d: 'M 8 0 C 26 120, -4 230, 14 350 S 32 570, 4 710 S 26 880, 9 1000', delay: 0 },
+  { d: 'M 30 0 C 18 150, 44 270, 28 390 S 12 610, 38 750 S 22 900, 31 1000', delay: -6 },
+  { d: 'M 70 0 C 82 140, 56 260, 72 380 S 88 600, 60 740 S 80 900, 69 1000', delay: -10 },
+  { d: 'M 92 0 C 74 110, 104 240, 86 370 S 68 590, 96 730 S 76 900, 91 1000', delay: -14 },
 ]
 
 function Vein({ d, delay }: { d: string; delay: number }) {
@@ -18,11 +18,11 @@ function Vein({ d, delay }: { d: string; delay: number }) {
   return (
     <g>
       {/* soft conductor glow */}
-      <path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={3} strokeOpacity={0.12} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      <path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={3} strokeOpacity={0.09} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
       {/* base line */}
-      <path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={0.5} strokeOpacity={0.32} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+      <path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={0.4} strokeOpacity={0.2} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
       {/* flowing neon pulses */}
-      <motion.path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={1.6} strokeLinecap="round" strokeDasharray="3 18" style={{ strokeDashoffset: off, filter: 'drop-shadow(0 0 5px var(--cyan)) drop-shadow(0 0 2px #fff)' }} vectorEffect="non-scaling-stroke" />
+      <motion.path d={d} fill="none" stroke="url(#veinGrad)" strokeWidth={1.3} strokeLinecap="round" strokeDasharray="2.5 22" style={{ strokeDashoffset: off, filter: 'drop-shadow(0 0 5px var(--cyan)) drop-shadow(0 0 2px #fff)' }} vectorEffect="non-scaling-stroke" />
     </g>
   )
 }

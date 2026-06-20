@@ -2,6 +2,7 @@ import { TopBar } from '@/components/shell/TopBar'
 import { AssistantDock } from '@/components/chat/AssistantDock'
 import { ProgressRail } from '@/components/scroll/ProgressRail'
 import { SpaceFlight } from '@/components/fx/SpaceFlight'
+import { NebulaPlate } from '@/components/fx/NebulaPlate'
 import { NebulaDrift } from '@/components/fx/NebulaDrift'
 import { NeonVeins } from '@/components/fx/NeonVeins'
 import { SectionConnector } from '@/components/scroll/SectionConnector'
@@ -27,6 +28,7 @@ export default function App() {
         <div className="absolute inset-0">
           <SpaceFlight />
         </div>
+        <NebulaPlate />
         <NebulaDrift />
         <div className="vignette absolute inset-0" />
       </div>
