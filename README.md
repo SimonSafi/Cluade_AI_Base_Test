@@ -19,12 +19,24 @@ The app ships as a Progressive Web App: a service worker (offline cache), a web 
 2. On the phone, open the URL in **Chrome** → menu **⋮ → Install app / Add to Home screen**.
 3. It launches full-screen with its own icon, runs offline, and behaves like a native app. The AI assistant/generator still need a network connection (they call your chosen provider directly).
 
-## Optional: a real Play-Store APK
+## Native Android APK (Capacitor — included)
 
-The PWA above is the simplest standalone app. For a packaged `.apk`/`.aab` (needs Android Studio + JDK on your machine):
+This repo already wraps the app with [Capacitor](https://capacitorjs.com/); the native project lives in `android/`. The build packages the web bundle **inside** the APK, so it runs fully offline as a normal app.
 
-- **PWABuilder** (easiest): deploy the PWA, paste its URL at https://www.pwabuilder.com → download a signed Android package (a Trusted Web Activity wrapper).
-- **Capacitor** (full native shell): `npm i @capacitor/core @capacitor/cli && npx cap init && npx cap add android`, point `webDir` at `dist`, then `npm run build && npx cap sync && npx cap open android` and build the APK in Android Studio.
+**Prerequisites:** a JDK 17+ and the Android SDK (both ship with Android Studio).
+
+```bash
+npm run build              # 1. build the web app into dist/
+npx cap sync android       # 2. copy dist/ into the native project
+cd android
+./gradlew assembleDebug    # 3. build the APK   (Windows: .\gradlew.bat assembleDebug)
+```
+
+The APK lands at `android/app/build/outputs/apk/debug/app-debug.apk`.
+
+**Install on your phone (sideload):** copy that `.apk` to the device, then in Android open it and allow *Install unknown apps* for your file manager/browser. App id `com.visuallab.app`, min Android 7.0.
+
+> The **debug** APK is for personal sideloading only. For the **Play Store** you need a *release* build signed with your own keystore: open `android/` in Android Studio → **Build → Generate Signed Bundle/APK → Android App Bundle (.aab)**, create a keystore, and upload the `.aab` to the Play Console.
 
 ---
 

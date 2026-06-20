@@ -15,3 +15,13 @@ yarn-error.log*
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# android / capacitor build artifacts
+*.apk
+*.aab
+gradle-build.log
+android/.gradle
+android/build
+android/app/build
+android/capacitor-cordova-android-plugins
+android/local.properties
