@@ -1,8 +1,34 @@
 # Claude Code AI Visual Lab
 
-A project starter pack for building a highly visual, interactive learning app that explains Claude Code, agents/subagents, skills, MCP, tokens, workflows, and cost/context discipline.
+A highly visual, interactive single-page app that explains Claude Code — agents/subagents, skills, MCP, tokens, workflow — plus a glossary, resources, a dev-files guide, and a bring-your-own-key AI assistant + project generator. Built with Vite + React + TypeScript + Tailwind + Framer Motion. **Installable as a standalone app (PWA)** on Android, iOS, and desktop.
 
-This package is intended to be opened as a new project folder in Claude Code. Start with `prompts/00_MASTER_PROMPT.md`.
+## Run it
+
+```bash
+npm install
+npm run dev       # dev server → http://localhost:5173
+npm run build     # production build → dist/
+npm run preview   # serve the built app (needed to test the installable app + offline)
+```
+
+## Install as a standalone Android app (PWA)
+
+The app ships as a Progressive Web App: a service worker (offline cache), a web manifest, and app icons.
+
+1. Host it over HTTPS (any static host — Netlify, Vercel, GitHub Pages, Cloudflare Pages) by deploying the `dist/` folder. (For a quick LAN test, `npm run preview -- --host` and open the shown URL on your phone.)
+2. On the phone, open the URL in **Chrome** → menu **⋮ → Install app / Add to Home screen**.
+3. It launches full-screen with its own icon, runs offline, and behaves like a native app. The AI assistant/generator still need a network connection (they call your chosen provider directly).
+
+## Optional: a real Play-Store APK
+
+The PWA above is the simplest standalone app. For a packaged `.apk`/`.aab` (needs Android Studio + JDK on your machine):
+
+- **PWABuilder** (easiest): deploy the PWA, paste its URL at https://www.pwabuilder.com → download a signed Android package (a Trusted Web Activity wrapper).
+- **Capacitor** (full native shell): `npm i @capacitor/core @capacitor/cli && npx cap init && npx cap add android`, point `webDir` at `dist`, then `npm run build && npx cap sync && npx cap open android` and build the APK in Android Studio.
+
+---
+
+This repo started from a Claude Code project pack. Original brief: `prompts/00_MASTER_PROMPT.md`.
 
 ## Goal
 
