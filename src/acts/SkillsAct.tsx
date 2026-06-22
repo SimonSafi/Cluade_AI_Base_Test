@@ -14,7 +14,7 @@ const CONTEXTS = [
   { id: 'chat', label: 'Quick question', loads: ['broad'] },
 ]
 
-const SLOT_X = [22, 50, 78] // % positions of the three cartridges
+const SLOT_X = [16, 50, 84] // % positions of the three cartridges
 const CORE = { x: 50, y: 17 }
 
 function Beam({ x, hue }: { x: number; hue: string }) {
@@ -82,7 +82,7 @@ export function SkillsAct() {
               >
                 {/* cartridge module */}
                 <div
-                  className="relative w-[110px] overflow-hidden rounded-[var(--radius-md)] px-3 pb-3 pt-4"
+                  className="relative w-[clamp(86px,26vw,110px)] overflow-hidden rounded-[var(--radius-md)] px-3 pb-3 pt-4"
                   style={{ background: 'var(--glass-strong)', border: `1px solid color-mix(in oklab, var(${hue}) ${loaded ? 65 : 22}%, transparent)`, boxShadow: loaded ? `0 0 26px -8px color-mix(in oklab, var(${hue}) 70%, transparent)` : 'none' }}
                 >
                   {/* top handle + LED */}

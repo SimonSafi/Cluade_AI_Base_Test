@@ -15,7 +15,7 @@ export function HeroAct() {
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[22%]" style={{ background: 'linear-gradient(transparent, color-mix(in oklab, var(--bg-void) 88%, transparent))' }} />
 
       {/* overlaid copy */}
-      <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-between px-6 py-12 text-center sm:py-16">
+      <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-between px-5 pb-10 pt-20 text-center sm:px-6 sm:pb-16 sm:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export function HeroAct() {
           className="flex flex-col items-center"
         >
           <MicroLabel hue="--c-hero">Claude Code · Visual Lab</MicroLabel>
-          <h1 className="display mt-4 max-w-3xl text-balance text-4xl text-hi sm:text-6xl">
+          <h1 className="display mt-4 max-w-3xl text-balance text-3xl text-hi sm:text-6xl">
             Your coding <span className="holo-text">command center</span>
           </h1>
           <p className="mt-4 max-w-md text-balance text-sm text-mid sm:text-base" style={{ textShadow: '0 2px 14px var(--bg-void)' }}>

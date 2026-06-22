@@ -4,12 +4,14 @@ import { ACTS, THINK_STAGES } from '@/content/acts'
 import { Icon } from '@/components/ui/Icon'
 import { MicroLabel } from '@/components/ui/MicroLabel'
 import { OrbitBackdrop } from '@/components/fx/OrbitBackdrop'
+import { useCompact } from '@/lib/compact'
 
 const meta = ACTS.find((a) => a.id === 'think')!
 const N = THINK_STAGES.length
 
 /** Pinned, centered diagram. Scroll advances the active stage in place — nothing drifts. */
 export function ThinkAct() {
+  const compact = useCompact()
   const ref = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
 
@@ -39,6 +41,38 @@ export function ThinkAct() {
   const stage = THINK_STAGES[active]
   const fillPct = (active / (N - 1)) * 100
   const done = active >= N - 1
+
+  // Phone App mode: the scroll-pinned diagram doesn't fit a panel — show a
+  // clean numbered pipeline (it IS a sequence, so numbering carries meaning).
+  if (compact) {
+    return (
+      <section id={meta.id} className="relative w-full overflow-hidden px-4 pb-10 pt-2">
+        <div className="absolute inset-0 -z-10"><OrbitBackdrop hue={meta.hue} seed={1} /></div>
+        <div className="mb-3 flex items-center gap-3">
+          <span className="font-mono text-sm text-faint">{meta.index}</span>
+          <MicroLabel hue={meta.hue}>{meta.kicker}</MicroLabel>
+        </div>
+        <h2 className="display text-balance text-2xl text-hi">{meta.title}</h2>
+        <p className="mt-2 text-sm text-mid">{meta.caption}</p>
+        <div className="mt-6 flex flex-col gap-3">
+          {THINK_STAGES.map((s, i) => (
+            <div key={s.id} className="flex items-start gap-3 rounded-[var(--radius-lg)] glass p-3.5" style={{ border: `1px solid color-mix(in oklab, var(${s.hue}) 35%, transparent)` }}>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-md)]" style={{ color: `var(${s.hue})`, background: `color-mix(in oklab, var(${s.hue}) 14%, transparent)` }}>
+                <Icon name={s.icon} size={20} />
+              </span>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-faint">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-sm font-semibold text-hi">{s.label}</span>
+                </div>
+                <div className="mt-0.5 text-xs leading-snug text-mid">{s.detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id={meta.id} ref={ref} className="relative" style={{ height: `${N * 42}vh` }}>

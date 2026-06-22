@@ -38,9 +38,9 @@ export function AssistantDock() {
       {/* launcher */}
       <motion.button
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-5 right-5 z-[90] grid h-14 w-14 place-items-center rounded-full text-hi"
+        className="fixed z-[90] grid h-14 w-14 place-items-center rounded-full text-hi"
         whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }}
-        style={{ background: 'radial-gradient(40% 40% at 36% 30%, color-mix(in oklab, var(--cyan) 60%, #fff 12%), color-mix(in oklab, var(--accent-2) 40%, transparent) 70%)', border: '1px solid color-mix(in oklab, var(--cyan) 55%, transparent)', boxShadow: '0 0 30px -4px var(--accent-glow)' }}
+        style={{ right: 'max(1.25rem, env(safe-area-inset-right))', bottom: 'calc(1.25rem + env(safe-area-inset-bottom))', background: 'radial-gradient(40% 40% at 36% 30%, color-mix(in oklab, var(--cyan) 60%, #fff 12%), color-mix(in oklab, var(--accent-2) 40%, transparent) 70%)', border: '1px solid color-mix(in oklab, var(--cyan) 55%, transparent)', boxShadow: '0 0 30px -4px var(--accent-glow)' }}
         aria-label="Open assistant"
       >
         <Icon name={open ? 'spark' : 'core'} size={24} />
@@ -51,8 +51,8 @@ export function AssistantDock() {
           <motion.div
             initial={{ opacity: 0, y: 24, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="glass-strong fixed bottom-24 right-5 z-[90] flex h-[min(540px,72vh)] w-[min(380px,92vw)] flex-col rounded-[var(--radius-lg)] overflow-hidden"
-            style={{ boxShadow: 'var(--shadow-float)' }}
+            className="glass-strong fixed z-[90] flex h-[min(540px,72vh)] w-[min(380px,92vw)] flex-col rounded-[var(--radius-lg)] overflow-hidden"
+            style={{ boxShadow: 'var(--shadow-float)', right: 'max(1.25rem, env(safe-area-inset-right))', bottom: 'calc(6rem + env(safe-area-inset-bottom))' }}
           >
             <div className="flex items-center justify-between border-b border-[var(--glass-border)] px-4 py-3">
               <div className="flex items-center gap-2 text-hi">

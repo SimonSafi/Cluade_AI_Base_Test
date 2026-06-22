@@ -66,8 +66,8 @@ export function McpAct() {
         })}
 
         {/* readout */}
-        <motion.div key={active.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22 }} className="absolute bottom-0 left-0 z-30 glass-strong rounded-[var(--radius-md)] px-4 py-3">
-          <div className="flex items-center gap-3">
+        <motion.div key={active.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22 }} className="absolute inset-x-0 bottom-0 z-30 mx-auto w-fit max-w-full glass-strong rounded-[var(--radius-md)] px-4 py-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <span className="grid h-8 w-8 place-items-center rounded-[var(--radius-sm)]" style={{ color: `var(${active.hue})`, background: `color-mix(in oklab, var(${active.hue}) 14%, transparent)` }}>
               <Icon name={active.icon} size={18} />
             </span>

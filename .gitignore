@@ -3,6 +3,7 @@ dist
 dist-ssr
 dev-dist
 *.local
+*.tsbuildinfo
 .DS_Store
 .vite
 
